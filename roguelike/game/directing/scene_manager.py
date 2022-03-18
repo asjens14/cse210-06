@@ -7,7 +7,7 @@ from game.casting.brick import Brick
 from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.point import Point
-from game.casting.racket import Racket
+# from game.casting.racket import Racket
 from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
@@ -178,7 +178,7 @@ class SceneManager:
                     y = FIELD_TOP + r * BRICK_HEIGHT
                     color = column[0]
                     frames = int(column[1])
-                    # points = BRICK_POINTS 
+                    points = BRICK_POINTS 
                     
                     if frames == 1:
                         points *= 2
@@ -191,7 +191,7 @@ class SceneManager:
                     body = Body(position, size, velocity)
                     # animation = Animation(images, BRICK_RATE, BRICK_DELAY)
 
-                    brick = Brick(body, animation, points)
+                    brick = Brick(body, points)
                     cast.add_actor(BRICK_GROUP, brick)
 
     def _add_dialog(self, cast, message):
@@ -227,17 +227,17 @@ class SceneManager:
         stats = Stats()
         cast.add_actor(STATS_GROUP, stats)
 
-    def _add_racket(self, cast):
-        cast.clear_actors(RACKET_GROUP)
-        x = CENTER_X - RACKET_WIDTH / 2
-        y = SCREEN_HEIGHT - RACKET_HEIGHT
-        position = Point(x, y)
-        size = Point(RACKET_WIDTH, RACKET_HEIGHT)
-        velocity = Point(0, 0)
-        body = Body(position, size, velocity)
-        animation = Animation(RACKET_IMAGES, RACKET_RATE)
-        racket = Racket(body, animation)
-        cast.add_actor(RACKET_GROUP, racket)
+    # def _add_racket(self, cast):
+    #     cast.clear_actors(RACKET_GROUP)
+    #     x = CENTER_X - RACKET_WIDTH / 2
+    #     y = SCREEN_HEIGHT - RACKET_HEIGHT
+    #     position = Point(x, y)
+    #     size = Point(RACKET_WIDTH, RACKET_HEIGHT)
+    #     velocity = Point(0, 0)
+    #     body = Body(position, size, velocity)
+    #     animation = Animation(RACKET_IMAGES, RACKET_RATE)
+    #     # racket = Racket(body, animation)
+    #     # cast.add_actor(RACKET_GROUP, racket)
 
     # ----------------------------------------------------------------------------------------------
     # scripting methods

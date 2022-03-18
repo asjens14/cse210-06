@@ -21,14 +21,14 @@ FIELD_LEFT = 0
 FIELD_RIGHT = SCREEN_WIDTH
 
 # FONT
-FONT_FILE = "batter/assets/fonts\\zorque.otf"
+FONT_FILE = "roguelike/assets/fonts\\zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
 # SOUND
-BOUNCE_SOUND = "batter/assets/sounds\\boing.wav"
-WELCOME_SOUND = "batter/assets/sounds\\start.wav"
-OVER_SOUND = "batter/assets/sounds\\over.wav"
+BOUNCE_SOUND = "roguelike/assets/sounds\\boing.wav"
+WELCOME_SOUND = "roguelike/assets/sounds\\start.wav"
+OVER_SOUND = "roguelike/assets/sounds\\over.wav"
 
 # TEXT
 ALIGN_CENTER = 0
@@ -55,7 +55,7 @@ IN_PLAY = 3
 GAME_OVER = 4
 
 # LEVELS
-LEVEL_FILE = "batter/assets/data/levels\\level{}.txt"
+LEVEL_FILE = "roguelike/assets/data/levels\\level{}.txt"
 BASE_LEVELS = 5
 
 # -------------------------------------------------------------------------------------------------- 
@@ -91,14 +91,14 @@ SCORE_FORMAT = "SCORE: {}"
 
 # BALL
 BALL_GROUP = "balls"
-BALL_IMAGE = "batter/assets/images\\000.png"
+BALL_IMAGE = "roguelike/assets/images\\000.png"
 BALL_WIDTH = 28
 BALL_HEIGHT = 28
 BALL_VELOCITY = 6
 
 # RACKET
 RACKET_GROUP = "rackets"
-RACKET_IMAGES = [f"batter/assets/images\\{n:03}.png" for n in range(100, 103)]
+RACKET_IMAGES = [f"roguelike/assets/images\\{n:03}.png" for n in range(100, 103)]
 RACKET_WIDTH = 106
 RACKET_HEIGHT = 28
 RACKET_RATE = 6
@@ -107,14 +107,14 @@ RACKET_VELOCITY = 7
 # BRICK
 BRICK_GROUP = "bricks"
 BRICK_IMAGES = {
-    "0": "batter/assets/images\\00.png",
-    "1": "batter/assets/images\\01.png"
+    "0": ["roguelike/assets/images\\00.png"],
+    "1": ["roguelike/assets/images\\01.png"]
 }
 BRICK_WIDTH = 64
 BRICK_HEIGHT = 64
-# BRICK_DELAY = 0.5
-# BRICK_RATE = 4
-# BRICK_POINTS = 50
+BRICK_DELAY = 0.5
+BRICK_RATE = 4
+BRICK_POINTS = 50
 
 # DIALOG
 DIALOG_GROUP = "dialogs"
