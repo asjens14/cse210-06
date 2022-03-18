@@ -178,7 +178,7 @@ class SceneManager:
                     y = FIELD_TOP + r * BRICK_HEIGHT
                     color = column[0]
                     frames = int(column[1])
-                    points = BRICK_POINTS 
+                    # points = BRICK_POINTS 
                     
                     if frames == 1:
                         points *= 2
@@ -189,7 +189,7 @@ class SceneManager:
                     images = BRICK_IMAGES[color][0:frames]
 
                     body = Body(position, size, velocity)
-                    animation = Animation(images, BRICK_RATE, BRICK_DELAY)
+                    # animation = Animation(images, BRICK_RATE, BRICK_DELAY)
 
                     brick = Brick(body, animation, points)
                     cast.add_actor(BRICK_GROUP, brick)

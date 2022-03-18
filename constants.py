@@ -55,7 +55,7 @@ IN_PLAY = 3
 GAME_OVER = 4
 
 # LEVELS
-LEVEL_FILE = "batter/assets/data\\level-{:03}.txt"
+LEVEL_FILE = "batter/assets/data/levels\\level{}.txt"
 BASE_LEVELS = 5
 
 # -------------------------------------------------------------------------------------------------- 
@@ -107,16 +107,14 @@ RACKET_VELOCITY = 7
 # BRICK
 BRICK_GROUP = "bricks"
 BRICK_IMAGES = {
-    "b": [f"batter/assets/images\\{i:03}.png" for i in range(10,19)],
-    "g": [f"batter/assets/images\\{i:03}.png" for i in range(20,29)],
-    "p": [f"batter/assets/images\\{i:03}.png" for i in range(30,39)],
-    "y": [f"batter/assets/images\\{i:03}.png" for i in range(40,49)]
+    "0": "batter/assets/images\\00.png",
+    "1": "batter/assets/images\\01.png"
 }
-BRICK_WIDTH = 80
-BRICK_HEIGHT = 28
-BRICK_DELAY = 0.5
-BRICK_RATE = 4
-BRICK_POINTS = 50
+BRICK_WIDTH = 64
+BRICK_HEIGHT = 64
+# BRICK_DELAY = 0.5
+# BRICK_RATE = 4
+# BRICK_POINTS = 50
 
 # DIALOG
 DIALOG_GROUP = "dialogs"
