@@ -107,8 +107,8 @@ RACKET_VELOCITY = 7
 # BRICK
 BRICK_GROUP = "bricks"
 BRICK_IMAGES = {
-    "0": ["roguelike/assets/images\\00.png"],
-    "1": ["roguelike/assets/images\\01.png"]
+    "0": [f"batter/assets/images\\{i:03}.png" for i in range(10,19)],
+    "g": [f"batter/assets/images\\{i:03}.png" for i in range(20,29)]
 }
 BRICK_WIDTH = 64
 BRICK_HEIGHT = 64
