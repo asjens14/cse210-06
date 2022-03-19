@@ -4,7 +4,7 @@ from game.casting.actor import Actor
 class Brick(Actor):
     """A solid, rectangular object that can be broken."""
 
-    def __init__(self, body, points, debug = False):
+    def __init__(self, body, animation, points, debug = False):
         """Constructs a new Brick.
         
         Args:
@@ -14,16 +14,16 @@ class Brick(Actor):
         """
         super().__init__(debug)
         self._body = body
-        # self._animation = animation
+        self._animation = animation
         self._points = points
         
-    # def get_animation(self):
-    #     """Gets the brick's image.
+    def get_animation(self):
+        """Gets the brick's image.
         
-    #     Returns:
-    #         An instance of Image.
-    #     """
-    #     return self._animation
+        Returns:
+            An instance of Image.
+        """
+        return self._animation
 
     def get_body(self):
         """Gets the brick's body.

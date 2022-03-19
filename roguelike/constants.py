@@ -41,8 +41,10 @@ WHITE = Color(255, 255, 255)
 PURPLE = Color(255, 0, 255)
 
 # KEYS
-LEFT = "left"
-RIGHT = "right"
+LEFT = "a"
+RIGHT = "d"
+UP = "w"
+DOWN = "s"
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"
@@ -90,28 +92,29 @@ LIVES_FORMAT = "LIVES: {}"
 SCORE_FORMAT = "SCORE: {}"
 
 # BALL
-BALL_GROUP = "balls"
-BALL_IMAGE = "roguelike/assets/images\\000.png"
-BALL_WIDTH = 28
-BALL_HEIGHT = 28
-BALL_VELOCITY = 6
+# BALL_GROUP = "balls"
+# BALL_IMAGE = "roguelike/assets/images\\100.png"
+# BALL_WIDTH = 28
+# BALL_HEIGHT = 28
+# BALL_VELOCITY = 6
 
-# RACKET
-RACKET_GROUP = "rackets"
-RACKET_IMAGES = [f"roguelike/assets/images\\{n:03}.png" for n in range(100, 103)]
-RACKET_WIDTH = 106
-RACKET_HEIGHT = 28
-RACKET_RATE = 6
-RACKET_VELOCITY = 7
+# PLAYER
+PLAYER_GROUP = "players"
+PLAYER_IMAGES = [f"roguelike/assets/images\\{n:03}.png" for n in range(100, 103)]
+PLAYER_WIDTH = 106
+PLAYER_HEIGHT = 28
+PLAYER_RATE = 6
+PLAYER_VELOCITY = 4
 
 # BRICK
 BRICK_GROUP = "bricks"
 BRICK_IMAGES = {
-    "0": [f"batter/assets/images\\{i:03}.png" for i in range(10,19)],
-    "g": [f"batter/assets/images\\{i:03}.png" for i in range(20,29)]
+    "0": [f"roguelike/assets/images\\000.png"],
+    "1": [f"roguelike/assets/images\\010.png"],
+    "d": [f"roguelike/assets/images\\000.png"]
 }
-BRICK_WIDTH = 64
-BRICK_HEIGHT = 64
+BRICK_WIDTH = 32
+BRICK_HEIGHT = 32
 BRICK_DELAY = 0.5
 BRICK_RATE = 4
 BRICK_POINTS = 50
