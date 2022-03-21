@@ -58,6 +58,7 @@ GAME_OVER = 4
 
 # LEVELS
 LEVEL_FILE = "roguelike/assets/data/levels\\level{}.txt"
+ENEMY_FILE = "roguelike/assets/data/enemy_map\\level{}.txt"
 BASE_LEVELS = 5
 
 # -------------------------------------------------------------------------------------------------- 
@@ -105,6 +106,16 @@ PLAYER_WIDTH = 32
 PLAYER_HEIGHT = 32
 PLAYER_RATE = 6
 PLAYER_VELOCITY = 4
+
+# ENEMY
+ENEMY_GROUP = "enemies"
+ENEMY_IMAGES = {
+    "a": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)]
+    }
+ENEMY_WIDTH = 32
+ENEMY_HEIGHT = 32
+ENEMY_RATE = 6
+ENEMY_VELOCITY = 4
 
 # BRICK
 BRICK_GROUP = "bricks"

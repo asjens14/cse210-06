@@ -8,6 +8,7 @@ from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.point import Point
 from game.casting.player import Player
+from game.casting.enemy import Enemy
 from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
@@ -18,6 +19,7 @@ from game.scripting.collide_player_action import CollidePlayerAction
 from game.scripting.control_player_action import ControlPlayerAction
 # from game.scripting.draw_ball_action import DrawBallAction
 from game.scripting.draw_bricks_action import DrawBricksAction
+from game.scripting.draw_enemy_action import DrawEnemyAction
 from game.scripting.draw_dialog_action import DrawDialogAction
 from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_player_action import DrawPlayerAction
@@ -26,6 +28,7 @@ from game.scripting.initialize_devices_action import InitializeDevicesAction
 from game.scripting.load_assets_action import LoadAssetsAction
 # from game.scripting.move_ball_action import MoveBallAction
 from game.scripting.move_player_action import MovePlayerAction
+from game.scripting.move_enemy_action import MoveEnemyAction
 from game.scripting.play_sound_action import PlaySoundAction
 from game.scripting.release_devices_action import ReleaseDevicesAction
 from game.scripting.start_drawing_action import StartDrawingAction
@@ -91,6 +94,7 @@ class SceneManager:
         # self._add_ball(cast)
         self._add_bricks(cast)
         self._add_player(cast)
+        self._add_enemies(cast)
         self._add_dialog(cast, ENTER_TO_START)
 
         self._add_initialize_script(script)
@@ -105,6 +109,7 @@ class SceneManager:
         # self._add_ball(cast)
         self._add_bricks(cast)
         self._add_player(cast)
+        self._add_enemies(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
 
         script.clear_actions(INPUT)
@@ -115,6 +120,7 @@ class SceneManager:
     def _prepare_try_again(self, cast, script):
         # self._add_ball(cast)
         self._add_player(cast)
+        self._add_enemies(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
 
         script.clear_actions(INPUT)
@@ -134,6 +140,7 @@ class SceneManager:
     def _prepare_game_over(self, cast, script):
         # self._add_ball(cast)
         self._add_player(cast)
+        self._add_enemies(cast)
         self._add_dialog(cast, WAS_GOOD_GAME)
 
         script.clear_actions(INPUT)
@@ -239,6 +246,38 @@ class SceneManager:
         player = Player(body, animation)
         cast.add_actor(PLAYER_GROUP, player)
 
+    def _add_enemies(self, cast):
+        cast.clear_actors(ENEMY_GROUP)
+        
+        stats = cast.get_first_actor(STATS_GROUP)
+        level = stats.get_level() % BASE_LEVELS
+        filename = ENEMY_FILE.format(level)
+
+        with open(filename, 'r') as file:
+            reader = csv.reader(file, skipinitialspace=True)
+
+            for r, row in enumerate(reader):
+                for c, column in enumerate(row):
+
+                    x = FIELD_LEFT + c * ENEMY_WIDTH
+                    y = FIELD_TOP + r * ENEMY_HEIGHT
+                    print(x)
+                    print(y)
+                    type = column[0]
+                    frames = int(column[1])
+
+                    if type != "0":
+                        position = Point(x, y)
+                        size = Point(ENEMY_WIDTH, ENEMY_HEIGHT)
+                        velocity = Point(0, 0)
+
+                        images = ENEMY_IMAGES[type][0:frames]
+
+                        body = Body(position, size, velocity)
+                        animation = Animation(images, ENEMY_RATE)
+
+                        enemy = Enemy(body, animation, type)
+                        cast.add_actor(ENEMY_GROUP, enemy)
     # ----------------------------------------------------------------------------------------------
     # scripting methods
     # ----------------------------------------------------------------------------------------------

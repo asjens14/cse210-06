@@ -73,13 +73,13 @@ class Player(Actor):
         y = self._body.get_position().get_y()
         if velocity_x==0:
             if velocity_y < 0:
-                self._body.set_position(Point(x,y+8))
+                self._body.set_position(Point(x,y+16))
             elif velocity_y > 0:
-                self._body.set_position(Point(x,y-8))
+                self._body.set_position(Point(x,y-16))
         elif velocity_y==0:
             if velocity_x < 0:
-                self._body.set_position(Point(x+8,y))
+                self._body.set_position(Point(x+16,y))
             elif velocity_x > 0:
-                self._body.set_position(Point(x-8,y))
+                self._body.set_position(Point(x-16,y))
         # velocity = Point(x, y)
         # self._body.set_velocity(velocity)
