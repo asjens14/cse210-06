@@ -67,9 +67,19 @@ class Player(Actor):
         self._body.set_velocity(velocity)
 
     def bounce(self):
-        x = self._body.get_velocity().get_x()
-        y= self._body.get_velocity().get_y()
-        print("x: "+ str(x))
-        print("y: "+ str(y))
-        velocity = Point(-x, -y)
-        self._body.set_velocity(velocity)
+        velocity_x = self._body.get_velocity().get_x()
+        velocity_y = self._body.get_velocity().get_y()
+        x = self._body.get_position().get_x()
+        y = self._body.get_position().get_y()
+        if velocity_x==0:
+            if velocity_y < 0:
+                self._body.set_position(Point(x,y+8))
+            elif velocity_y > 0:
+                self._body.set_position(Point(x,y-8))
+        elif velocity_y==0:
+            if velocity_x < 0:
+                self._body.set_position(Point(x+8,y))
+            elif velocity_x > 0:
+                self._body.set_position(Point(x-8,y))
+        # velocity = Point(x, y)
+        # self._body.set_velocity(velocity)
