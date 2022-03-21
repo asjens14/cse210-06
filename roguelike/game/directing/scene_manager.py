@@ -178,10 +178,10 @@ class SceneManager:
                     y = FIELD_TOP + r * BRICK_HEIGHT
                     color = column[0]
                     frames = int(column[1])
-                    points = BRICK_POINTS 
+                    points = color
                     
-                    if frames == 1:
-                        points *= 2
+                    # if frames == 1:
+                    #     points *= 2
                     
                     position = Point(x, y)
                     size = Point(BRICK_WIDTH, BRICK_HEIGHT)

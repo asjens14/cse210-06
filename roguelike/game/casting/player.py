@@ -57,11 +57,19 @@ class Player(Actor):
         self._body.set_velocity(velocity)
 
     def swing_down(self):
-        """Steers the bat to the up."""
+        """Steers the bat to the down."""
         velocity = Point(0, PLAYER_VELOCITY)
         self._body.set_velocity(velocity)
 
     def stop_moving(self):
         """Stops the bat from moving."""
         velocity = Point(0, 0)
+        self._body.set_velocity(velocity)
+
+    def bounce(self):
+        x = self._body.get_velocity().get_x()
+        y= self._body.get_velocity().get_y()
+        print("x: "+ str(x))
+        print("y: "+ str(y))
+        velocity = Point(-x, -y)
         self._body.set_velocity(velocity)

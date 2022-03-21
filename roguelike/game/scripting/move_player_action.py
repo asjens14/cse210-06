@@ -16,8 +16,8 @@ class MovePlayerAction(Action):
         x = position.get_x()
         
         position = position.add(velocity)
-
-        if x < 0:
+        
+        if x < (0):
             position = Point(0, position.get_y())
         elif x > (SCREEN_WIDTH - PLAYER_WIDTH):
             position = Point(SCREEN_WIDTH - PLAYER_WIDTH, position.get_y())
