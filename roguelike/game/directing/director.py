@@ -26,8 +26,16 @@ class Director(ActionCallback):
             A number representing the next scene to transition to.
         """
         self._scene_manager.prepare_scene(scene, self._cast, self._script)
+    
+    def next_room(self, room):
+        """Overriden ActionCallback method transitions to next scene.
         
-    def start_game(self):
+        Args:
+            A number representing the next scene to transition to.
+        """
+        self._scene_manager.prepare_scene(NEW_GAME, self._cast, self._script)
+        
+    def start_game(self, ):
         """Starts the game. Runs the main game loop."""
         self.on_next(NEW_GAME)
         self._execute_actions(INITIALIZE)

@@ -11,3 +11,8 @@ class ChangeSceneAction(Action):
     def execute(self, cast, script, callback):
         if self._keyboard_service.is_key_pressed(ENTER):
             callback.on_next(self._next_scene)
+        
+        
+
+    def get_next_level(self):
+        pass

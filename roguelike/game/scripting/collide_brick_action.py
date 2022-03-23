@@ -8,6 +8,7 @@ class CollideBrickAction(Action):
     def __init__(self, physics_service, audio_service):
         self._physics_service = physics_service
         self._audio_service = audio_service
+        # self._director = Director
         
     def execute(self, cast, script, callback):
         player = cast.get_first_actor(PLAYER_GROUP)
@@ -27,3 +28,7 @@ class CollideBrickAction(Action):
                     # points = brick.get_points()
                     # stats.add_points(points)
                     # cast.remove_actor(BRICK_GROUP, brick)
+            elif points == 'd':
+                #send to next room
+                
+                pass

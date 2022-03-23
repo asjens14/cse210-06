@@ -42,9 +42,13 @@ PURPLE = Color(255, 0, 255)
 
 # KEYS
 LEFT = "a"
+LEFT2 = "left"
 RIGHT = "d"
+RIGHT2 = "right"
 UP = "w"
+UP2 = "up"
 DOWN = "s"
+DOWN2 = "down"
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"
@@ -57,8 +61,8 @@ IN_PLAY = 3
 GAME_OVER = 4
 
 # LEVELS
-LEVEL_FILE = "roguelike/assets/data/levels\\level{}.txt"
-ENEMY_FILE = "roguelike/assets/data/enemy_map\\level{}.txt"
+LEVEL_FILE = "roguelike/assets/data/rooms\\room{}.txt"
+ENEMY_FILE = "roguelike/assets/data/enemy_map\\room{}.txt"
 BASE_LEVELS = 5
 
 # -------------------------------------------------------------------------------------------------- 

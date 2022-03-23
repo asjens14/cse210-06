@@ -57,12 +57,14 @@ class SceneManager:
     DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
-    DRAW_PLAYER_ACTION= DrawPlayerAction(VIDEO_SERVICE)
+    DRAW_PLAYER_ACTION = DrawPlayerAction(VIDEO_SERVICE)
+    DRAW_ENEMY_ACTION = DrawEnemyAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     # MOVE_BALL_ACTION = MoveBallAction()
     MOVE_PLAYER_ACTION = MovePlayerAction()
+    MOVE_ENEMY_ACTION = MovePlayerAction()
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -261,8 +263,7 @@ class SceneManager:
 
                     x = FIELD_LEFT + c * ENEMY_WIDTH
                     y = FIELD_TOP + r * ENEMY_HEIGHT
-                    print(x)
-                    print(y)
+                    
                     type = column[0]
                     frames = int(column[1])
 
@@ -296,6 +297,7 @@ class SceneManager:
         # script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
         script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         script.add_action(OUTPUT, self.DRAW_PLAYER_ACTION)
+        script.add_action(OUTPUT, self.DRAW_ENEMY_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
         script.add_action(OUTPUT, self.END_DRAWING_ACTION)
 
@@ -311,8 +313,10 @@ class SceneManager:
         script.clear_actions(UPDATE)
         # script.add_action(UPDATE, self.MOVE_BALL_ACTION)
         script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
+        script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_PLAYER_ACTION)
         script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
+        script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)
