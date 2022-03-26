@@ -17,6 +17,26 @@ class Player(Actor):
         super().__init__(debug)
         self._body = body
         self._animation = animation
+        self._x = 1
+        self._y = 1
+
+    def get_location(self) -> tuple:
+        """Gets the bat's location on world map.
+        
+        Returns:
+            Tuple of location.
+        """
+        return self._x, self._y
+
+    def set_location(self, x, y) -> None:
+        """Gets the bat's location on world map.
+        
+        Returns:
+            Tuple of location.
+        """
+        self._x=x
+        self._y=y
+        return
 
     def get_animation(self):
         """Gets the bat's animation.

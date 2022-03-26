@@ -64,7 +64,7 @@ class SceneManager:
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     # MOVE_BALL_ACTION = MoveBallAction()
     MOVE_PLAYER_ACTION = MovePlayerAction()
-    MOVE_ENEMY_ACTION = MovePlayerAction()
+    MOVE_ENEMY_ACTION = MoveEnemyAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -84,6 +84,17 @@ class SceneManager:
         elif scene == GAME_OVER:    
             self._prepare_game_over(cast, script)
     
+    def prepare_room(self, room, cast, script):
+        if room == NEW_GAME:
+            self._prepare_new_game(cast, script)
+        elif room == NEXT_LEVEL:
+            self._prepare_next_level(cast, script)
+        elif scene == TRY_AGAIN:
+            self._prepare_try_again(cast, script)
+        elif scene == IN_PLAY:
+            self._prepare_in_play(cast, script)
+        elif scene == GAME_OVER:    
+            self._prepare_game_over(cast, script)
     # ----------------------------------------------------------------------------------------------
     # scene methods
     # ----------------------------------------------------------------------------------------------
@@ -112,10 +123,10 @@ class SceneManager:
         self._add_bricks(cast)
         self._add_player(cast)
         self._add_enemies(cast)
-        self._add_dialog(cast, PREP_TO_LAUNCH)
+        # self._add_dialog(cast, PREP_TO_START)
 
         script.clear_actions(INPUT)
-        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
+        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 0))
         self._add_output_script(script)
         script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
         
@@ -123,10 +134,10 @@ class SceneManager:
         # self._add_ball(cast)
         self._add_player(cast)
         self._add_enemies(cast)
-        self._add_dialog(cast, PREP_TO_LAUNCH)
+        self._add_dialog(cast, PREP_TO_START)
 
         script.clear_actions(INPUT)
-        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
+        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 0))
         self._add_update_script(script)
         self._add_output_script(script)
 
@@ -176,7 +187,7 @@ class SceneManager:
         stats = cast.get_first_actor(STATS_GROUP)
         level = stats.get_level() % BASE_LEVELS
         filename = LEVEL_FILE.format(level)
-
+        
         with open(filename, 'r') as file:
             reader = csv.reader(file, skipinitialspace=True)
 
@@ -250,7 +261,6 @@ class SceneManager:
 
     def _add_enemies(self, cast):
         cast.clear_actors(ENEMY_GROUP)
-        
         stats = cast.get_first_actor(STATS_GROUP)
         level = stats.get_level() % BASE_LEVELS
         filename = ENEMY_FILE.format(level)

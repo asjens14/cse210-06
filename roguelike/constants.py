@@ -1,5 +1,5 @@
 from game.casting.color import Color
-
+import random
 # -------------------------------------------------------------------------------------------------- 
 # GENERAL GAME CONSTANTS
 # -------------------------------------------------------------------------------------------------- 
@@ -64,7 +64,14 @@ GAME_OVER = 4
 LEVEL_FILE = "roguelike/assets/data/rooms\\room{}.txt"
 ENEMY_FILE = "roguelike/assets/data/enemy_map\\room{}.txt"
 BASE_LEVELS = 5
+ROOMS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+random.shuffle(ROOMS)
+ROOMS = [[ROOMS[0],ROOMS[1],ROOMS[2]],
+        [ROOMS[3],ROOMS[4],ROOMS[5]], 
+        [ROOMS[6],ROOMS[7],ROOMS[8]]]
 
+print('The following is the shuffled array')
+print(ROOMS)
 # -------------------------------------------------------------------------------------------------- 
 # SCRIPTING CONSTANTS
 # -------------------------------------------------------------------------------------------------- 
@@ -137,5 +144,5 @@ BRICK_POINTS = 50
 # DIALOG
 DIALOG_GROUP = "dialogs"
 ENTER_TO_START = "PRESS ENTER TO START"
-PREP_TO_LAUNCH = "PREPARING TO LAUNCH"
+PREP_TO_START = "PREPARING TO START"
 WAS_GOOD_GAME = "GAME OVER"

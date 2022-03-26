@@ -54,9 +54,9 @@ class Stats(Actor):
         if self._lives > 0:
             self._lives -= 1
     
-    def next_level(self):
+    def next_level(self, level):
         """Adds one level."""
-        self._level += 1
+        self._level = level
 
     def reset(self):
         """Resets the stats back to their default values."""

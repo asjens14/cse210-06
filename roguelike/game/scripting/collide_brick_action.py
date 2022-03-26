@@ -1,8 +1,8 @@
 from constants import *
 from game.casting.sound import Sound
 from game.scripting.action import Action
-
-
+from game.scripting.create_map import CreateMap
+import time
 class CollideBrickAction(Action):
 
     def __init__(self, physics_service, audio_service):
@@ -30,5 +30,36 @@ class CollideBrickAction(Action):
                     # cast.remove_actor(BRICK_GROUP, brick)
             elif points == 'd':
                 #send to next room
-                
-                pass
+                if self._physics_service.has_collided(player_body, brick_body):
+                    direction = self._find_direction(player_body.get_position())
+                    next_level = 0
+                    player_x, player_y = player.get_location()
+                    print(ROOMS)
+                    if(direction == "Left"):
+                        player_x -= 1
+                    elif(direction == "Right"):
+                        player_x += 1
+                    elif(direction == "Up"):
+                        player_y -= 1
+                    elif(direction == "Down"):
+                        player_y += 1
+                    stats = cast.get_first_actor(STATS_GROUP)
+                    # next_room = CreateMap.choose_random_room()
+                    stats.next_level(ROOMS[player_x][player_y])
+                    print(player_x, player_y, ROOMS[player_x][player_y])
+                    player.set_location(player_x,player_y)
+                    callback.on_next(NEXT_LEVEL)
+            
+    
+    def _find_direction(self, position) -> str:
+        if position.get_x() < FIELD_LEFT + 64:
+            return "Left"
+        elif position.get_x() > FIELD_RIGHT - 64:
+            return "Right"
+        elif position.get_y() < FIELD_TOP + 64:
+            return "Up"
+        elif position.get_y() > FIELD_BOTTOM - 64:
+            return "Down"
+        else:
+            return "Cheater"
+
