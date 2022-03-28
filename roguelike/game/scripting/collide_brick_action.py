@@ -45,8 +45,8 @@ class CollideBrickAction(Action):
                         player_y += 1
                     stats = cast.get_first_actor(STATS_GROUP)
                     # next_room = CreateMap.choose_random_room()
-                    stats.next_level(ROOMS[player_x][player_y])
-                    print(player_x, player_y, ROOMS[player_x][player_y])
+                    stats.next_level(ROOMS[player_y][player_x])
+                    print(player_x, player_y, ROOMS[player_y][player_x])
                     player.set_location(player_x,player_y)
                     callback.on_next(NEXT_LEVEL)
             

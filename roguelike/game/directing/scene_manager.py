@@ -84,17 +84,6 @@ class SceneManager:
         elif scene == GAME_OVER:    
             self._prepare_game_over(cast, script)
     
-    def prepare_room(self, room, cast, script):
-        if room == NEW_GAME:
-            self._prepare_new_game(cast, script)
-        elif room == NEXT_LEVEL:
-            self._prepare_next_level(cast, script)
-        elif scene == TRY_AGAIN:
-            self._prepare_try_again(cast, script)
-        elif scene == IN_PLAY:
-            self._prepare_in_play(cast, script)
-        elif scene == GAME_OVER:    
-            self._prepare_game_over(cast, script)
     # ----------------------------------------------------------------------------------------------
     # scene methods
     # ----------------------------------------------------------------------------------------------
@@ -327,6 +316,6 @@ class SceneManager:
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_PLAYER_ACTION)
-        script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
+        # script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
         script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)
