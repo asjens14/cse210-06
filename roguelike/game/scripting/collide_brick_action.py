@@ -49,6 +49,7 @@ class CollideBrickAction(Action):
                     print(player_x, player_y, ROOMS[player_y][player_x])
                     player.set_location(player_x,player_y)
                     callback.on_next(NEXT_LEVEL)
+                    break
             
     
     def _find_direction(self, position) -> str:
