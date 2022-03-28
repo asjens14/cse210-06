@@ -32,9 +32,14 @@ class CollideBrickAction(Action):
                 #send to next room
                 if self._physics_service.has_collided(player_body, brick_body):
                     direction = self._find_direction(player_body.get_position())
-                    next_level = 0
-                    player_x, player_y = player.get_location()
-                    print(ROOMS)
+                    # player_x, player_y = player.get_location()
+                    stats = cast.get_first_actor(STATS_GROUP)
+                    room = stats.get_level()
+                    for r, row in enumerate(ROOMS):
+                        for c, column in enumerate(row):
+                            if(column == room):
+                                player_x=c
+                                player_y=r
                     if(direction == "Left"):
                         player_x -= 1
                     elif(direction == "Right"):
@@ -43,11 +48,12 @@ class CollideBrickAction(Action):
                         player_y -= 1
                     elif(direction == "Down"):
                         player_y += 1
-                    stats = cast.get_first_actor(STATS_GROUP)
+                    
                     # next_room = CreateMap.choose_random_room()
                     stats.next_level(ROOMS[player_y][player_x])
+                    print(ROOMS)
                     print(player_x, player_y, ROOMS[player_y][player_x])
-                    player.set_location(player_x,player_y)
+                    # player.set_location(player_x,player_y)
                     callback.on_next(NEXT_LEVEL)
                     break
             

@@ -2,6 +2,10 @@ from constants import *
 from game.casting.actor import Actor
 from game.casting.point import Point
 
+global player_x
+global player_y
+player_x=1
+player_y=1
 
 class Player(Actor):
     """A implement used to hit and bounce the ball in the game."""
@@ -17,26 +21,26 @@ class Player(Actor):
         super().__init__(debug)
         self._body = body
         self._animation = animation
-        self._x = 1
-        self._y = 1
+        self._x = player_x
+        self._y = player_y
 
-    def get_location(self) -> tuple:
-        """Gets the bat's location on world map.
+    # def get_location(self) -> tuple:
+    #     """Gets the bat's location on world map.
         
-        Returns:
-            Tuple of location.
-        """
-        return self._x, self._y
+    #     Returns:
+    #         Tuple of location.
+    #     """
+    #     return self._x, self._y
 
-    def set_location(self, x, y) -> None:
-        """Gets the bat's location on world map.
+    # def set_location(self, x, y) -> None:
+    #     """Gets the player's location on world map.
         
-        Returns:
-            Tuple of location.
-        """
-        self._x=x
-        self._y=y
-        return
+    #     Returns:
+    #         Tuple of location.
+    #     """
+    #     player_x=x
+    #     player_y=y
+    #     return
 
     def get_animation(self):
         """Gets the bat's animation.
