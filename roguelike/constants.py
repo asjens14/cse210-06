@@ -69,6 +69,8 @@ random.shuffle(ROOMS)
 ROOMS = [[ROOMS[0],ROOMS[1],ROOMS[2]],
         [ROOMS[3],ROOMS[4],ROOMS[5]], 
         [ROOMS[6],ROOMS[7],ROOMS[8]]]
+ROOM_RIGHT = 2
+ROOM_BOTTOM = 2
 
 print('The following is the shuffled array')
 print(ROOMS)
@@ -104,11 +106,11 @@ LIVES_FORMAT = "LIVES: {}"
 SCORE_FORMAT = "SCORE: {}"
 
 # BALL
-# BALL_GROUP = "balls"
-# BALL_IMAGE = "roguelike/assets/images\\100.png"
-# BALL_WIDTH = 28
-# BALL_HEIGHT = 28
-# BALL_VELOCITY = 6
+BALL_GROUP = "balls"
+BALL_IMAGE = "roguelike/assets/images\\100.png"
+BALL_WIDTH = 28
+BALL_HEIGHT = 28
+BALL_VELOCITY = 6
 
 # PLAYER
 PLAYER_GROUP = "players"

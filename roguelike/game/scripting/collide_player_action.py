@@ -10,7 +10,7 @@ class CollidePlayerAction(Action):
         self._audio_service = audio_service
         
     def execute(self, cast, script, callback):
-        # ball = cast.get_first_actor(BALL_GROUP)
+        ball = cast.get_first_actor(BALL_GROUP)
         player = cast.get_first_actor(PLAYER_GROUP)
         
         # ball_body = ball.get_body()

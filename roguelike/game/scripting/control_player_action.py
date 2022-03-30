@@ -1,14 +1,17 @@
 from constants import *
 from game.scripting.action import Action
-
+from game.casting.ball import Ball 
 
 class ControlPlayerAction(Action):
 
     def __init__(self, keyboard_service):
         self._keyboard_service = keyboard_service
-        
+        self._ball = Ball()
+
     def execute(self, cast, script, callback):
         player = cast.get_first_actor(PLAYER_GROUP)
+        if self._keyboard_service.is_key_down(SPACE): 
+            self._ball.release(cast)
         if self._keyboard_service.is_key_down(LEFT) or self._keyboard_service.is_key_down(LEFT2): 
             player.swing_left()
         elif self._keyboard_service.is_key_down(RIGHT) or self._keyboard_service.is_key_down(RIGHT2): 
@@ -17,5 +20,6 @@ class ControlPlayerAction(Action):
             player.swing_up()
         elif self._keyboard_service.is_key_down(DOWN) or self._keyboard_service.is_key_down(DOWN2): 
             player.swing_down()   
+        
         else: 
             player.stop_moving()        

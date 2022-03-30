@@ -1,7 +1,6 @@
 from constants import *
 from game.casting.sound import Sound
 from game.scripting.action import Action
-from game.scripting.create_map import CreateMap
 import time
 class CollideBrickAction(Action):
 
@@ -49,7 +48,6 @@ class CollideBrickAction(Action):
                     elif(direction == "Down"):
                         player_y += 1
                     
-                    # next_room = CreateMap.choose_random_room()
                     stats.next_level(ROOMS[player_y][player_x])
                     print(ROOMS)
                     print(player_x, player_y, ROOMS[player_y][player_x])

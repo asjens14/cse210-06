@@ -17,7 +17,7 @@ from game.scripting.collide_borders_action import CollideBordersAction
 from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_player_action import CollidePlayerAction
 from game.scripting.control_player_action import ControlPlayerAction
-# from game.scripting.draw_ball_action import DrawBallAction
+from game.scripting.draw_ball_action import DrawBallAction
 from game.scripting.draw_bricks_action import DrawBricksAction
 from game.scripting.draw_enemy_action import DrawEnemyAction
 from game.scripting.draw_dialog_action import DrawDialogAction
@@ -26,7 +26,7 @@ from game.scripting.draw_player_action import DrawPlayerAction
 from game.scripting.end_drawing_action import EndDrawingAction
 from game.scripting.initialize_devices_action import InitializeDevicesAction
 from game.scripting.load_assets_action import LoadAssetsAction
-# from game.scripting.move_ball_action import MoveBallAction
+from game.scripting.move_ball_action import MoveBallAction
 from game.scripting.move_player_action import MovePlayerAction
 from game.scripting.move_enemy_action import MoveEnemyAction
 from game.scripting.play_sound_action import PlaySoundAction
@@ -53,7 +53,7 @@ class SceneManager:
     COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PLAYER_ACTION = CollidePlayerAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_PLAYER_ACTION = ControlPlayerAction(KEYBOARD_SERVICE)
-    # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
+    DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
     DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
@@ -62,7 +62,7 @@ class SceneManager:
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
-    # MOVE_BALL_ACTION = MoveBallAction()
+    MOVE_BALL_ACTION = MoveBallAction()
     MOVE_PLAYER_ACTION = MovePlayerAction()
     MOVE_ENEMY_ACTION = MoveEnemyAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -154,9 +154,9 @@ class SceneManager:
     # casting methods
     # ----------------------------------------------------------------------------------------------
     
-    # def _activate_ball(self, cast):
-    #     ball = cast.get_first_actor(BALL_GROUP)
-    #     ball.release()
+    def _activate_ball(self, cast):
+        ball = cast.get_first_actor(BALL_GROUP)
+        #     ball.release()
 
     # def _add_ball(self, cast):
     #     cast.clear_actors(BALL_GROUP)
@@ -179,7 +179,8 @@ class SceneManager:
         
         with open(filename, 'r') as file:
             reader = csv.reader(file, skipinitialspace=True)
-
+            room_x, room_y = self._get_room(cast)
+            
             for r, row in enumerate(reader):
                 for c, column in enumerate(row):
 
@@ -191,6 +192,27 @@ class SceneManager:
                     
                     # if frames == 1:
                     #     points *= 2
+                    if room_x == 'Left':
+                        if x == 0:
+                            color = "1"
+                            frames = 1
+                            points = "1"
+                    elif room_x == 'Right':
+                        if x == 992:
+                            color = "1"
+                            frames = 1
+                            points = color
+                                
+                    if room_y == "Top":
+                        if y == 60: 
+                            color = "1"
+                            frames = 1
+                            points = color
+                    elif room_y == 'Bottom':
+                        if y == 480:
+                            color = "1"
+                            frames = 1
+                            points = color
                     
                     position = Point(x, y)
                     size = Point(BRICK_WIDTH, BRICK_HEIGHT)
@@ -202,6 +224,28 @@ class SceneManager:
 
                     brick = Brick(body, animation, points)
                     cast.add_actor(BRICK_GROUP, brick)
+
+    def _get_room(self, cast) -> tuple:
+        stats = cast.get_first_actor(STATS_GROUP)
+        room = stats.get_level()
+        for r, row in enumerate(ROOMS):
+            for c, column in enumerate(row):
+                if(column == room):
+                    player_x=c
+                    player_y=r
+        if player_x == 0:
+            x = "Left"
+        elif player_x == ROOM_RIGHT:
+            x = "Right"
+        else:
+            x= "None"
+        if player_y == 0:
+            y = "Top"
+        elif player_y == ROOM_BOTTOM:
+            y = "Bottom"
+        else:
+            y= "None"
+        return x, y
 
     def _add_dialog(self, cast, message):
         cast.clear_actors(DIALOG_GROUP)
