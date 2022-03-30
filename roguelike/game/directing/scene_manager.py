@@ -180,7 +180,7 @@ class SceneManager:
         with open(filename, 'r') as file:
             reader = csv.reader(file, skipinitialspace=True)
             room_x, room_y = self._get_room(cast)
-            
+
             for r, row in enumerate(reader):
                 for c, column in enumerate(row):
 
@@ -189,7 +189,7 @@ class SceneManager:
                     color = column[0]
                     frames = int(column[1])
                     points = color
-                    
+
                     # if frames == 1:
                     #     points *= 2
                     if room_x == 'Left':
@@ -209,7 +209,7 @@ class SceneManager:
                             frames = 1
                             points = color
                     elif room_y == 'Bottom':
-                        if y == 480:
+                        if y == 540:
                             color = "1"
                             frames = 1
                             points = color
