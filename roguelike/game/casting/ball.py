@@ -70,8 +70,8 @@ class Ball(Actor):
        
         
         
-        ball = Ball(body, self.image, True)
-        cast.add_actor(BALL_GROUP, ball)
+        # ball = Ball(body, self.image, True)
+        # cast.add_actor(BALL_GROUP, ball)
     
     
     # def _add_ball(self, cast):
