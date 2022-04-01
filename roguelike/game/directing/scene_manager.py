@@ -1,7 +1,7 @@
 import csv
 from constants import *
 from game.casting.animation import Animation
-# from game.casting.ball import 
+# from game.casting.ball import Ball
 from game.casting.body import Body
 from game.casting.brick import Brick
 from game.casting.image import Image
@@ -52,7 +52,7 @@ class SceneManager:
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PLAYER_ACTION = CollidePlayerAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    CONTROL_PLAYER_ACTION = ControlPlayerAction(KEYBOARD_SERVICE)
+    CONTROL_PLAYER_ACTION = ControlPlayerAction(KEYBOARD_SERVICE, VIDEO_SERVICE)
     DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
     DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)

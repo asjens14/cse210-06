@@ -107,9 +107,9 @@ SCORE_FORMAT = "SCORE: {}"
 
 # BALL
 BALL_GROUP = "balls"
-BALL_IMAGE = "roguelike/assets/images\\100.png"
-BALL_WIDTH = 28
-BALL_HEIGHT = 28
+BALL_IMAGE = "roguelike/assets/images\\ball.png"
+BALL_WIDTH = 32
+BALL_HEIGHT = 32
 BALL_VELOCITY = 6
 
 # PLAYER

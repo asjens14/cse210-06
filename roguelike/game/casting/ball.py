@@ -7,7 +7,7 @@ from game.casting.body import Body
 class Ball(Actor):
     """A solid, spherical object that is bounced around in the game."""
     
-    def __init__(self, debug = False):
+    def __init__(self, body, image, debug = False):
         """Constructs a new Ball.
 
         Args:
@@ -16,13 +16,8 @@ class Ball(Actor):
             debug: If it is being debugged. 
         """
         super().__init__(debug)
-        # position = Point(x, y)
-        size = Point(BALL_WIDTH, BALL_HEIGHT)
-        velocity = Point(0, 0)
-        # self._body = Body(position, size, velocity)
-        # self._x = Body.get_position().get_x()
-        # self._y = Body.get_position().get_y()
-        # self._image = image
+        self._body = body
+        self._image = image
         
     # def bounce_x(self):
     #     """Bounces the ball in the x direction."""
@@ -60,19 +55,11 @@ class Ball(Actor):
         
     def release(self, cast):
         """Release the ball from the posistion of the entity"""
-       
-        # vx = Point.get_x()
-        # vy = Point.get_y()
-        # velocity = Point(vx, vy)
-        # self._body.set_velocity(velocity)
-        cast.clear_actors(BALL_GROUP)
-        
-       
-        
-        
-        ball = Ball(body, self.image, True)
-        cast.add_actor(BALL_GROUP, ball)
-    
+        rn = random.uniform(0.9, 1.1)
+        vx = random.choice([-BALL_VELOCITY * rn, BALL_VELOCITY * rn])
+        vy = -BALL_VELOCITY
+        velocity = Point(vx, vy)
+        self._body.set_velocity(velocity)
     
     # def _add_ball(self, cast):
         # cast.clear_actors(BALL_GROUP)
