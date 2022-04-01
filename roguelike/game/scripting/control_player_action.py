@@ -42,7 +42,7 @@ class ControlPlayerAction(Action):
 
             # enemy = Enemy(body, animation, type)
             # cast.add_actor(ENEMY_GROUP, enemy)
-            print('shoot')
+            # print('shoot')
 
 
         if self._keyboard_service.is_key_down(LEFT) or self._keyboard_service.is_key_down(LEFT2): 
@@ -60,7 +60,7 @@ class ControlPlayerAction(Action):
         # cast.clear_actors(BALL_GROUP)
         x = CENTER_X - BALL_WIDTH / 2
         y = CENTER_Y - BALL_HEIGHT / 2
-        position = Point(x, y)
+        position = player
         size = Point(BALL_WIDTH, BALL_HEIGHT)
         velocity = Point(0, 0)
         body = Body(position, size, velocity)
@@ -68,3 +68,5 @@ class ControlPlayerAction(Action):
         ball = Ball(body, image, True)
         cast.add_actor(BALL_GROUP, ball)
         self._video_service.draw_image(image, position)
+        ball.release()
+        print(len(cast.get_actors(BALL_GROUP)))

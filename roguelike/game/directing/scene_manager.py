@@ -339,8 +339,8 @@ class SceneManager:
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
-        # script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
         script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
+        script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
         script.add_action(OUTPUT, self.DRAW_PLAYER_ACTION)
         script.add_action(OUTPUT, self.DRAW_ENEMY_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
@@ -356,7 +356,7 @@ class SceneManager:
         
     def _add_update_script(self, script):
         script.clear_actions(UPDATE)
-        # script.add_action(UPDATE, self.MOVE_BALL_ACTION)
+        script.add_action(UPDATE, self.MOVE_BALL_ACTION)
         script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
         script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)

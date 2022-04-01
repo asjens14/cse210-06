@@ -53,7 +53,7 @@ class Ball(Actor):
         """
         return self._image
         
-    def release(self, cast):
+    def release(self):
         """Release the ball from the posistion of the entity"""
         rn = random.uniform(0.9, 1.1)
         vx = random.choice([-BALL_VELOCITY * rn, BALL_VELOCITY * rn])
@@ -65,7 +65,7 @@ class Ball(Actor):
         # vy = Point.get_y()
         # velocity = Point(vx, vy)
         # self._body.set_velocity(velocity)
-        cast.clear_actors(BALL_GROUP)
+        # cast.clear_actors(BALL_GROUP)
         
        
         
