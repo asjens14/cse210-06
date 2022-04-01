@@ -15,6 +15,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_borders_action import CollideBordersAction
 from game.scripting.collide_brick_action import CollideBrickAction
+from game.scripting.collide_enemy_action import CollideEnemyAction
 from game.scripting.collide_player_action import CollidePlayerAction
 from game.scripting.control_player_action import ControlPlayerAction
 from game.scripting.draw_ball_action import DrawBallAction
@@ -51,6 +52,7 @@ class SceneManager:
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_ENEMY_ACTION = CollideEnemyAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PLAYER_ACTION = CollidePlayerAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_PLAYER_ACTION = ControlPlayerAction(KEYBOARD_SERVICE, VIDEO_SERVICE)
     DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
@@ -359,6 +361,7 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_ENEMY_ACTION)
         script.add_action(UPDATE, self.COLLIDE_PLAYER_ACTION)
         # script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
         script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)

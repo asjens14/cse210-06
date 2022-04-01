@@ -60,6 +60,19 @@ class Ball(Actor):
         vy = -BALL_VELOCITY
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
+       
+        # vx = Point.get_x()
+        # vy = Point.get_y()
+        # velocity = Point(vx, vy)
+        # self._body.set_velocity(velocity)
+        cast.clear_actors(BALL_GROUP)
+        
+       
+        
+        
+        # ball = Ball(body, self.image, True)
+        # cast.add_actor(BALL_GROUP, ball)
+    
     
     # def _add_ball(self, cast):
         # cast.clear_actors(BALL_GROUP)
