@@ -27,6 +27,12 @@ class CollideBrickAction(Action):
                     # points = brick.get_points()
                     # stats.add_points(points)
                     # cast.remove_actor(BRICK_GROUP, brick)
+                balls = cast.get_actors(BALL_GROUP)
+                for ball in balls:
+                    ball_body = ball.get_body()
+                    if self._physics_service.has_collided(ball_body, brick_body):
+                        cast.remove_actor(BALL_GROUP, ball)
+
             elif points == 'd':
                 #send to next room
                 if self._physics_service.has_collided(player_body, brick_body):
