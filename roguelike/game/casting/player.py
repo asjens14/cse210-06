@@ -23,6 +23,7 @@ class Player(Actor):
         self._animation = animation
         self._x = player_x
         self._y = player_y
+        self._lives = current_lives
 
     # def get_location(self) -> tuple:
     #     """Gets the bat's location on world map.
@@ -107,3 +108,5 @@ class Player(Actor):
                 self._body.set_position(Point(x-16,y))
         # velocity = Point(x, y)
         # self._body.set_velocity(velocity)
+
+    

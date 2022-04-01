@@ -1,3 +1,4 @@
+from pickle import NONE
 from game.casting.color import Color
 import random
 # -------------------------------------------------------------------------------------------------- 
@@ -95,6 +96,7 @@ RELEASE = 6
 STATS_GROUP = "stats"
 DEFAULT_LIVES = 3
 MAXIMUM_LIVES = 5
+current_lives = DEFAULT_LIVES
 
 # HUD
 HUD_MARGIN = 15
