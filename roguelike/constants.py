@@ -119,6 +119,10 @@ BALL_WIDTH = 32
 BALL_HEIGHT = 32
 BALL_VELOCITY = 6
 
+#ENEMY BALL
+ENEMY_BALL_GROUP = "enemyballs"
+
+
 # PLAYER
 PLAYER_GROUP = "players"
 PLAYER_IMAGES = [f"roguelike/assets/images\\{n:03}.png" for n in range(100, 103)]

@@ -16,5 +16,15 @@ class MoveBallAction(Action):
                 velocity = body.get_velocity()
                 position = position.add(velocity)
                 body.set_position(position)
+        
+        if cast.get_actors(ENEMY_BALL_GROUP) is not None:
+            eballs = cast.get_actors(ENEMY_BALL_GROUP)
+            for eball in eballs:
+                body = eball.get_body()
+                position = body.get_position()
+                velocity = body.get_velocity()
+                position = position.add(velocity)
+                body.set_position(position)
+
         else:
             pass

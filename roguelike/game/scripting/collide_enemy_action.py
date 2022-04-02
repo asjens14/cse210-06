@@ -17,6 +17,7 @@ class CollideEnemyAction(Action):
         enemies = cast.get_actors(ENEMY_GROUP)
         stats = cast.get_first_actor(STATS_GROUP)
         balls = cast.get_actors(BALL_GROUP)
+        eballs = cast.get_actors(ENEMY_BALL_GROUP)
 
         elapsed = time.time() - self._start
         if elapsed >= 1:
@@ -68,6 +69,22 @@ class CollideEnemyAction(Action):
                     if stats.get_score() == 15:
                         callback.on_next(YOU_WIN)
                    
+            for eball in eballs:
+                player_body = player.get_body()
+                eball_body = eball.get_body()
+
+                if self._physics_service.has_collided(player_body, eball_body):
+                    # player.bounce()
+                    sound = Sound(BOUNCE_SOUND)
+                    self._audio_service.play_sound(sound)
+                    stats = cast.get_first_actor(STATS_GROUP)
+                    stats.lose_life()
+                    self._start = time.time()
+                    cast.remove_actor(ENEMY_BALL_GROUP, eball)
+                    if stats.get_lives() == 0:
+                        callback.on_next(GAME_OVER)
                     
+                    if stats.get_score() == 15:
+                        callback.on_next(YOU_WIN)     
         
                 

@@ -33,6 +33,11 @@ class CollideBrickAction(Action):
                     if self._physics_service.has_collided(ball_body, brick_body):
                         cast.remove_actor(BALL_GROUP, ball)
 
+                eballs = cast.get_actors(ENEMY_BALL_GROUP)
+                for eball in eballs:
+                    eball_body = eball.get_body()
+                    if self._physics_service.has_collided(eball_body, brick_body):
+                        cast.remove_actor(ENEMY_BALL_GROUP, eball)
             elif points == 'd':
                 #send to next room
                 if self._physics_service.has_collided(player_body, brick_body):

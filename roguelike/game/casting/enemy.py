@@ -50,6 +50,7 @@ class Enemy(Player):
         elif direction == 'u': 
             position = Point(player_x, player_y-ENEMY_HEIGHT)
             velocity = Point(0, -BALL_VELOCITY)
+            print('working')
         elif direction == 'd': 
             position = Point(player_x, player_y+ENEMY_HEIGHT)
             velocity = Point(0, BALL_VELOCITY)
@@ -58,6 +59,7 @@ class Enemy(Player):
         body = Body(position, size, velocity)
         image = Image(BALL_IMAGE)
         ball = Ball(body, image, True)
-        cast.add_actor(BALL_GROUP, ball)
+        cast.add_actor(ENEMY_BALL_GROUP, ball)
+        print("Should be drawing")
         video_service.draw_image(image, position)
         # ball.release()

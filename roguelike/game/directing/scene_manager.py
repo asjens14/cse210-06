@@ -186,7 +186,7 @@ class SceneManager:
     def _add_bricks(self, cast):
         cast.clear_actors(BRICK_GROUP)
         cast.clear_actors(BALL_GROUP)
-
+        cast.clear_actors(ENEMY_BALL_GROUP)
 
         stats = cast.get_first_actor(STATS_GROUP)
         level = stats.get_level()

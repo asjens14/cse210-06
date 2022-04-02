@@ -55,5 +55,6 @@ class ControlPlayerAction(Action):
         image = Image(BALL_IMAGE)
         ball = Ball(body, image, True)
         cast.add_actor(BALL_GROUP, ball)
+        
         self._video_service.draw_image(image, position)
         # ball.release()
