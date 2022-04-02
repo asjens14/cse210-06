@@ -135,8 +135,8 @@ PLAYER_VELOCITY = 4
 ENEMY_GROUP = "enemies"
 ENEMY_IMAGES = {
     "a": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)],
-    "b": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)],
-    "c": ["roguelike/assets/images\\110.png"]
+    "b": ["roguelike/assets/images\\113.png"],
+    "c": ["roguelike/assets/images\\120.png"]
     }
 ENEMY_WIDTH = 32
 ENEMY_HEIGHT = 32
