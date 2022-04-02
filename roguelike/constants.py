@@ -53,6 +53,10 @@ DOWN2 = "down"
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"
+I="i"
+J="j"
+K="k"
+L="l"
 
 # SCENES
 NEW_GAME = 0
@@ -60,6 +64,7 @@ TRY_AGAIN = 1
 NEXT_LEVEL = 2
 IN_PLAY = 3
 GAME_OVER = 4
+YOU_WIN = 5
 
 # LEVELS
 LEVEL_FILE = "roguelike/assets/data/rooms\\room{}.txt"
@@ -73,8 +78,6 @@ ROOMS = [[ROOMS[0],ROOMS[1],ROOMS[2]],
 ROOM_RIGHT = 2
 ROOM_BOTTOM = 2
 
-print('The following is the shuffled array')
-print(ROOMS)
 # -------------------------------------------------------------------------------------------------- 
 # SCRIPTING CONSTANTS
 # -------------------------------------------------------------------------------------------------- 
@@ -97,6 +100,7 @@ STATS_GROUP = "stats"
 DEFAULT_LIVES = 3
 MAXIMUM_LIVES = 5
 current_lives = DEFAULT_LIVES
+DIFFICULTY = 5
 
 # HUD
 HUD_MARGIN = 15
@@ -125,7 +129,9 @@ PLAYER_VELOCITY = 4
 # ENEMY
 ENEMY_GROUP = "enemies"
 ENEMY_IMAGES = {
-    "a": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)]
+    "a": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)],
+    "b": [f"roguelike/assets/images\\{n:03}.png" for n in range(110, 113)],
+    "c": ["roguelike/assets/images\\110.png"]
     }
 ENEMY_WIDTH = 32
 ENEMY_HEIGHT = 32
@@ -151,3 +157,8 @@ DIALOG_GROUP = "dialogs"
 ENTER_TO_START = "PRESS ENTER TO START"
 PREP_TO_START = "PREPARING TO START"
 WAS_GOOD_GAME = "GAME OVER"
+WINNER = "YOU WIN!!"
+
+
+#BOSS
+BOSS_LIVES = 10

@@ -19,12 +19,11 @@ class CollideEnemyAction(Action):
         balls = cast.get_actors(BALL_GROUP)
 
         elapsed = time.time() - self._start
-        print(elapsed)
         if elapsed >= 1:
             for enemy in enemies:
                 player_body = player.get_body()
                 enemy_body = enemy.get_body()
-        
+                
                 if self._physics_service.has_collided(player_body, enemy_body):
                     # player.bounce()
                     sound = Sound(BOUNCE_SOUND)
@@ -33,21 +32,27 @@ class CollideEnemyAction(Action):
                     stats.lose_life()
                     self._start=time.time()
 
-                    # callback.on_next(NEXT_LEVEL)
+                   
                     if stats.get_lives() == 0:
                         callback.on_next(GAME_OVER)
                         # self._audio_service.play_sound(over_sound)
+
+                   
                 for ball in balls:
                     ball_body = ball.get_body()
                     if self._physics_service.has_collided(ball_body, enemy_body):
+                        stats.add_points(1)
                         cast.remove_actor(ENEMY_GROUP, enemy)
                         cast.remove_actor(BALL_GROUP, ball)
-                break
+                         
+                        if stats.get_score() == 10:
+                            callback.on_next(YOU_WIN)
+
+                
             
             for ball in balls:
                 player_body = player.get_body()
                 ball_body = ball.get_body()
-                enemy_body = enemy.get_body()
 
                 if self._physics_service.has_collided(player_body, ball_body):
                     # player.bounce()
@@ -56,8 +61,13 @@ class CollideEnemyAction(Action):
                     stats = cast.get_first_actor(STATS_GROUP)
                     stats.lose_life()
                     self._start = time.time()
-                
-                
-                    # callback.on_next(NEXT_LEVEL)
-                    break
+
+                    if stats.get_lives() == 0:
+                        callback.on_next(GAME_OVER)
+                    
+                    if stats.get_score() == 10:
+                        callback.on_next(YOU_WIN)
+                   
+                    
+        
                 

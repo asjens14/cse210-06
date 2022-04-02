@@ -66,7 +66,7 @@ class SceneManager:
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     MOVE_BALL_ACTION = MoveBallAction()
     MOVE_PLAYER_ACTION = MovePlayerAction()
-    MOVE_ENEMY_ACTION = MoveEnemyAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    MOVE_ENEMY_ACTION = MoveEnemyAction(PHYSICS_SERVICE, AUDIO_SERVICE, VIDEO_SERVICE)
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -85,6 +85,8 @@ class SceneManager:
             self._prepare_in_play(cast, script)
         elif scene == GAME_OVER:    
             self._prepare_game_over(cast, script)
+        elif scene == YOU_WIN:    
+            self._prepare_you_win(cast, script)
     
     # ----------------------------------------------------------------------------------------------
     # scene methods
@@ -152,6 +154,15 @@ class SceneManager:
         script.clear_actions(UPDATE)
         self._add_output_script(script)
 
+    def _prepare_you_win(self, cast, script):
+        self._add_player(cast)
+        self._add_enemies(cast)
+        self._add_dialog(cast, WINNER)
+
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))
+        script.clear_actions(UPDATE)
+        self._add_output_script(script)
     # ----------------------------------------------------------------------------------------------
     # casting methods
     # ----------------------------------------------------------------------------------------------
@@ -174,9 +185,11 @@ class SceneManager:
 
     def _add_bricks(self, cast):
         cast.clear_actors(BRICK_GROUP)
-        
+        cast.clear_actors(BALL_GROUP)
+
+
         stats = cast.get_first_actor(STATS_GROUP)
-        level = stats.get_level() % BASE_LEVELS
+        level = stats.get_level()
         filename = LEVEL_FILE.format(level)
         
         with open(filename, 'r') as file:
@@ -297,7 +310,7 @@ class SceneManager:
     def _add_enemies(self, cast):
         cast.clear_actors(ENEMY_GROUP)
         stats = cast.get_first_actor(STATS_GROUP)
-        level = stats.get_level() % BASE_LEVELS
+        level = stats.get_level()
         filename = ENEMY_FILE.format(level)
 
         with open(filename, 'r') as file:
@@ -321,9 +334,10 @@ class SceneManager:
 
                         body = Body(position, size, velocity)
                         animation = Animation(images, ENEMY_RATE)
-
                         enemy = Enemy(body, animation, type)
                         cast.add_actor(ENEMY_GROUP, enemy)
+        
+        
     # ----------------------------------------------------------------------------------------------
     # scripting methods
     # ----------------------------------------------------------------------------------------------
@@ -364,5 +378,5 @@ class SceneManager:
         script.add_action(UPDATE, self.COLLIDE_ENEMY_ACTION)
         # script.add_action(UPDATE, self.COLLIDE_PLAYER_ACTION)
         # script.add_action(UPDATE, self.MOVE_PLAYER_ACTION)
-        script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
+        # script.add_action(UPDATE, self.MOVE_ENEMY_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)

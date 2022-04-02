@@ -55,8 +55,6 @@ class CollideBrickAction(Action):
                         player_y += 1
                     
                     stats.next_level(ROOMS[player_y][player_x])
-                    print(ROOMS)
-                    print(player_x, player_y, ROOMS[player_y][player_x])
                     # player.set_location(player_x,player_y)
                     callback.on_next(NEXT_LEVEL)
                     break
