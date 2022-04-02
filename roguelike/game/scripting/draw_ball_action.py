@@ -8,7 +8,7 @@ class DrawBallAction(Action):
         self._video_service = video_service
         
     def execute(self, cast, script, callback):
-        if cast.get_first_actor(BALL_GROUP) is not None:
+        if cast.get_actors(BALL_GROUP) is not None:
             balls = cast.get_actors(BALL_GROUP)
             for ball in balls:
                 body = ball.get_body()
