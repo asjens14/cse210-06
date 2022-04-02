@@ -45,7 +45,7 @@ class CollideEnemyAction(Action):
                         cast.remove_actor(ENEMY_GROUP, enemy)
                         cast.remove_actor(BALL_GROUP, ball)
                          
-                        if stats.get_score() == 10:
+                        if stats.get_score() == 15:
                             callback.on_next(YOU_WIN)
 
                 
@@ -65,7 +65,7 @@ class CollideEnemyAction(Action):
                     if stats.get_lives() == 0:
                         callback.on_next(GAME_OVER)
                     
-                    if stats.get_score() == 10:
+                    if stats.get_score() == 15:
                         callback.on_next(YOU_WIN)
                    
                     

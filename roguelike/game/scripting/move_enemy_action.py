@@ -24,9 +24,11 @@ class MoveEnemyAction(Action):
 
             elapsed = time.time() - self._start
             if cast.get_first_actor(STATS_GROUP).get_score() >= DIFFICULTY:
-                delay = .3
-            else:
                 delay = .1
+            elif cast.get_first_actor(STATS_GROUP).get_score() >= DIFFICULTY2 :
+                delay = .05
+            else:
+                delay = .5
             if elapsed >= delay:
                 self._start = time.time()
                 enemy.spawn_ball(cast, self._video_service)

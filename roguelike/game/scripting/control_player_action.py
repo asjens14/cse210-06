@@ -16,7 +16,7 @@ class ControlPlayerAction(Action):
     def execute(self, cast, script, callback):
         player = cast.get_first_actor(PLAYER_GROUP)
         elapsed = time.time()-self._start
-        if self._keyboard_service.is_key_down(SPACE) and elapsed >= .2: 
+        if self._keyboard_service.is_key_down(SPACE) and elapsed >= .5: 
             self._spawn_ball(cast, player.get_body().get_position())
             self._start = time.time()
 
